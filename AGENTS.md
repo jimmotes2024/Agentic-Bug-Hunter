@@ -136,6 +136,13 @@ Install for another harness:
 ./install.sh --agent pi --project       # local .pi/ install
 ```
 
+## Cursor Cloud specific instructions
+
+- Python 3.12 is already on the default image. Install dependencies with `python3 -m pip install --user -r requirements.txt`. The command is idempotent. `~/.local/bin` is not on `PATH`, so run the suite from the repo root with `python3 -m pytest -q`.
+- The local lab is stdlib-only: `python3 serve.py` serves `http://127.0.0.1:8080`. The environment does not start it. Leave it bound to loopback.
+- `./install_tools.sh` installs optional recon binaries. The pytest suite does not need them.
+- Offline product checks: `python3 tools/scope_checker.py <url> --domain <pattern> --json` and `python3 tools/lead_board.py add|show|next <target>`.
+
 ## Critical Rules (Always Active)
 
 1. READ FULL SCOPE before touching any asset
